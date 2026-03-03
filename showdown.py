@@ -121,7 +121,14 @@ def cmd_run(args):
         sys.exit(1)
 
     spec = parse_spec(spec_path)
-    n = args.n or spec.parameters.get("default_n", 1000000)
+    output_type = spec.parameters.get("output_type", "text")
+
+    if output_type == "image":
+        width = spec.parameters.get("default_width", 1920)
+        height = spec.parameters.get("default_height", 1080)
+        n = width  # pass width as n for results.json compatibility
+    else:
+        n = args.n or spec.parameters.get("default_n", 1000000)
 
     if args.lang:
         target_langs = args.lang
@@ -135,7 +142,10 @@ def cmd_run(args):
         print(f"{YELLOW}No solutions found. Run 'showdown generate {name}' first.{RESET}")
         return
 
-    print(f"{BOLD}Benchmarking {len(available)} languages for '{name}' (N={n:,})...{RESET}\n")
+    if output_type == "image":
+        print(f"{BOLD}Benchmarking {len(available)} languages for '{name}' ({width}x{height})...{RESET}\n")
+    else:
+        print(f"{BOLD}Benchmarking {len(available)} languages for '{name}' (N={n:,})...{RESET}\n")
 
     results = []
     for i, lang in enumerate(available, 1):
