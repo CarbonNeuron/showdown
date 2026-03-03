@@ -63,7 +63,7 @@ Ambient light intensity: 0.1.
 - **bench_runs**: 3
 
 ## Languages
-c, rust, go, javascript, python
+c, rust, go, javascript, python, dotnet9, dotnet10, dotnet9-aot, dotnet10-aot
 
 ## Docker
 - **base_image**: ubuntu:24.04
