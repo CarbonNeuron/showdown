@@ -1,6 +1,6 @@
 {
   "competition": "raytracer",
-  "timestamp": "2026-03-03T02:33:36.664169+00:00",
+  "timestamp": "2026-03-03T04:22:38.412896+00:00",
   "parameters": {
     "n": 1920,
     "default_n": 1000000,
@@ -17,11 +17,11 @@
     {
       "language": "c",
       "build_time_s": 0.0,
-      "run_time_median_s": 0.940608,
+      "run_time_median_s": 0.950406,
       "run_times_s": [
-        0.937482,
-        0.959369,
-        0.940608
+        0.950406,
+        0.945337,
+        0.960509
       ],
       "image_size_bytes": 28244272,
       "output_valid": true,
@@ -30,11 +30,11 @@
     {
       "language": "rust",
       "build_time_s": 0.0,
-      "run_time_median_s": 0.938731,
+      "run_time_median_s": 0.86707,
       "run_times_s": [
-        0.929745,
-        0.947585,
-        0.938731
+        0.867196,
+        0.86707,
+        0.866223
       ],
       "image_size_bytes": 29197349,
       "output_valid": true,
@@ -43,11 +43,11 @@
     {
       "language": "go",
       "build_time_s": 0.0,
-      "run_time_median_s": 1.300582,
+      "run_time_median_s": 1.262269,
       "run_times_s": [
-        1.300582,
-        1.274442,
-        1.309358
+        1.233955,
+        1.262269,
+        1.313581
       ],
       "image_size_bytes": 29448636,
       "output_valid": true,
@@ -56,11 +56,11 @@
     {
       "language": "javascript",
       "build_time_s": 0.0,
-      "run_time_median_s": 1.341227,
+      "run_time_median_s": 1.261649,
       "run_times_s": [
-        1.341288,
-        1.309479,
-        1.341227
+        1.260346,
+        1.272753,
+        1.261649
       ],
       "image_size_bytes": 79438428,
       "output_valid": true,
@@ -69,11 +69,11 @@
     {
       "language": "python",
       "build_time_s": 0.0,
-      "run_time_median_s": 19.493257,
+      "run_time_median_s": 19.744418,
       "run_times_s": [
-        19.358797,
-        19.720957,
-        19.493257
+        19.335728,
+        32.921212,
+        19.744418
       ],
       "image_size_bytes": 43195451,
       "output_valid": true,
@@ -82,11 +82,11 @@
     {
       "language": "dotnet9",
       "build_time_s": 0.0,
-      "run_time_median_s": 2.595032,
+      "run_time_median_s": 2.613487,
       "run_times_s": [
-        2.611359,
-        2.580695,
-        2.595032
+        2.672676,
+        2.567345,
+        2.613487
       ],
       "image_size_bytes": 81580988,
       "output_valid": true,
@@ -95,11 +95,11 @@
     {
       "language": "dotnet10",
       "build_time_s": 0.0,
-      "run_time_median_s": 2.551639,
+      "run_time_median_s": 2.619903,
       "run_times_s": [
-        2.603397,
-        1.601713,
-        2.551639
+        2.593132,
+        2.629727,
+        2.619903
       ],
       "image_size_bytes": 83228112,
       "output_valid": true,
@@ -108,11 +108,11 @@
     {
       "language": "dotnet9-aot",
       "build_time_s": 0.0,
-      "run_time_median_s": 0.871438,
+      "run_time_median_s": 0.951067,
       "run_times_s": [
-        0.849102,
-        0.878879,
-        0.871438
+        0.877389,
+        0.951067,
+        0.95208
       ],
       "image_size_bytes": 28890108,
       "output_valid": true,
@@ -121,13 +121,325 @@
     {
       "language": "dotnet10-aot",
       "build_time_s": 0.0,
-      "run_time_median_s": 0.883068,
+      "run_time_median_s": 0.953551,
       "run_times_s": [
-        0.883068,
-        0.878357,
-        0.88906
+        0.956203,
+        0.953551,
+        0.930281
       ],
       "image_size_bytes": 28839824,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "cpp",
+      "build_time_s": 0.0,
+      "run_time_median_s": 0.837145,
+      "run_times_s": [
+        0.825978,
+        0.841106,
+        0.837145
+      ],
+      "image_size_bytes": 28737687,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "zig",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.023594,
+      "run_times_s": [
+        1.049129,
+        1.012929,
+        1.023594
+      ],
+      "image_size_bytes": 28765275,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "nim",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.323666,
+      "run_times_s": [
+        1.323666,
+        1.311053,
+        1.332412
+      ],
+      "image_size_bytes": 28270317,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "d",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.289268,
+      "run_times_s": [
+        1.319436,
+        1.289268,
+        1.243484
+      ],
+      "image_size_bytes": 28617724,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "crystal",
+      "build_time_s": 0.0,
+      "run_time_median_s": 0.887178,
+      "run_times_s": [
+        0.830848,
+        0.887178,
+        0.930259
+      ],
+      "image_size_bytes": 28684825,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "swift",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.129721,
+      "run_times_s": [
+        1.129721,
+        1.134777,
+        1.12744
+      ],
+      "image_size_bytes": 47345244,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "dart",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.45959,
+      "run_times_s": [
+        1.467218,
+        1.45959,
+        1.40684
+      ],
+      "image_size_bytes": 31140855,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "java",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.162767,
+      "run_times_s": [
+        1.13944,
+        1.175854,
+        1.162767
+      ],
+      "image_size_bytes": 99708724,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "kotlin",
+      "build_time_s": 0.0,
+      "run_time_median_s": 0.926276,
+      "run_times_s": [
+        0.926276,
+        0.883185,
+        0.940739
+      ],
+      "image_size_bytes": 103955926,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "scala",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.36289,
+      "run_times_s": [
+        1.36289,
+        1.4023,
+        1.361248
+      ],
+      "image_size_bytes": 106370533,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "haskell",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.132745,
+      "run_times_s": [
+        1.136083,
+        1.124548,
+        1.132745
+      ],
+      "image_size_bytes": 28714982,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "ocaml",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.309616,
+      "run_times_s": [
+        1.301887,
+        1.316361,
+        1.309616
+      ],
+      "image_size_bytes": 29109952,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "fortran",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.145543,
+      "run_times_s": [
+        1.133311,
+        1.150861,
+        1.145543
+      ],
+      "image_size_bytes": 28931683,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "pascal",
+      "build_time_s": 0.0,
+      "run_time_median_s": 3.686689,
+      "run_times_s": [
+        3.68968,
+        3.686689,
+        3.684252
+      ],
+      "image_size_bytes": 28436061,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "ada",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.448406,
+      "run_times_s": [
+        1.406305,
+        1.448406,
+        1.456061
+      ],
+      "image_size_bytes": 28817139,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "typescript",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.644567,
+      "run_times_s": [
+        1.692626,
+        1.644567,
+        1.588368
+      ],
+      "image_size_bytes": 79240859,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "ruby",
+      "build_time_s": 0.0,
+      "run_time_median_s": 52.997789,
+      "run_times_s": [
+        52.997789,
+        52.402077,
+        53.194167
+      ],
+      "image_size_bytes": 69342102,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "lua",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.141787,
+      "run_times_s": [
+        1.124291,
+        1.141787,
+        1.172314
+      ],
+      "image_size_bytes": 28958886,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "perl",
+      "build_time_s": 0.0,
+      "run_time_median_s": 94.018729,
+      "run_times_s": [
+        93.249607,
+        94.018729,
+        94.587777
+      ],
+      "image_size_bytes": 61389525,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "php",
+      "build_time_s": 0.0,
+      "run_time_median_s": 17.451564,
+      "run_times_s": [
+        17.287768,
+        17.451564,
+        17.479789
+      ],
+      "image_size_bytes": 180613924,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "elixir",
+      "build_time_s": 0.0,
+      "run_time_median_s": 15.441171,
+      "run_times_s": [
+        15.483922,
+        15.345472,
+        15.441171
+      ],
+      "image_size_bytes": 126151833,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "erlang",
+      "build_time_s": 0.0,
+      "run_time_median_s": 13.218593,
+      "run_times_s": [
+        13.218593,
+        13.155926,
+        13.234685
+      ],
+      "image_size_bytes": 124540733,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "bash",
+      "build_time_s": 0.0,
+      "run_time_median_s": 38.022952,
+      "run_times_s": [
+        38.022952,
+        38.039555,
+        37.766298
+      ],
+      "image_size_bytes": 29307451,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "awk",
+      "build_time_s": 0.0,
+      "run_time_median_s": 38.038996,
+      "run_times_s": [
+        37.878722,
+        38.038996,
+        38.084096
+      ],
+      "image_size_bytes": 29303919,
       "output_valid": true,
       "error": ""
     }

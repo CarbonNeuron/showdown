@@ -50,17 +50,61 @@ Ambient light intensity: 0.1.
 
 | Rank | Language | Runtime | vs Fastest | Image Size |
 |-----:|----------|--------:|-----------:|-----------:|
-| 1 | **C# (.NET 9 AOT)** | 871.4 ms | 1.0x | 27.55 MB |
-| 2 | **C# (.NET 10 AOT)** | 883.1 ms | 1.0x | 27.50 MB |
-| 3 | **Rust** | 938.7 ms | 1.1x | 27.84 MB |
-| 4 | C | 940.6 ms | 1.1x | 26.94 MB |
-| 5 | Go | 1.301 s | 1.5x | 28.08 MB |
-| 6 | JavaScript | 1.341 s | 1.5x | 75.76 MB |
-| 7 | C# (.NET 10) | 2.552 s | 2.9x | 79.37 MB |
-| 8 | C# (.NET 9) | 2.595 s | 3.0x | 77.80 MB |
-| 9 | Python | 19.493 s | 22.4x | 41.19 MB |
+| 1 | **C++** | 837.1 ms | 1.0x | 27.41 MB |
+| 2 | **Rust** | 867.1 ms | 1.0x | 27.84 MB |
+| 3 | **Crystal** | 887.2 ms | 1.1x | 27.36 MB |
+| 4 | Kotlin | 926.3 ms | 1.1x | 99.14 MB |
+| 5 | C | 950.4 ms | 1.1x | 26.94 MB |
+| 6 | C# (.NET 9 AOT) | 951.1 ms | 1.1x | 27.55 MB |
+| 7 | C# (.NET 10 AOT) | 953.6 ms | 1.1x | 27.50 MB |
+| 8 | Zig | 1.024 s | 1.2x | 27.43 MB |
+| 9 | Swift | 1.130 s | 1.3x | 45.15 MB |
+| 10 | Haskell | 1.133 s | 1.4x | 27.38 MB |
+| 11 | Lua | 1.142 s | 1.4x | 27.62 MB |
+| 12 | Fortran | 1.146 s | 1.4x | 27.59 MB |
+| 13 | Java | 1.163 s | 1.4x | 95.09 MB |
+| 14 | JavaScript | 1.262 s | 1.5x | 75.76 MB |
+| 15 | Go | 1.262 s | 1.5x | 28.08 MB |
+| 16 | D | 1.289 s | 1.5x | 27.29 MB |
+| 17 | OCaml | 1.310 s | 1.6x | 27.76 MB |
+| 18 | Nim | 1.324 s | 1.6x | 26.96 MB |
+| 19 | Scala | 1.363 s | 1.6x | 101.44 MB |
+| 20 | Ada | 1.448 s | 1.7x | 27.48 MB |
+| 21 | Dart | 1.460 s | 1.7x | 29.70 MB |
+| 22 | TypeScript | 1.645 s | 2.0x | 75.57 MB |
+| 23 | C# (.NET 9) | 2.613 s | 3.1x | 77.80 MB |
+| 24 | C# (.NET 10) | 2.620 s | 3.1x | 79.37 MB |
+| 25 | Pascal | 3.687 s | 4.4x | 27.12 MB |
+| 26 | Erlang | 13.219 s | 15.8x | 118.77 MB |
+| 27 | Elixir | 15.441 s | 18.4x | 120.31 MB |
+| 28 | PHP | 17.452 s | 20.8x | 172.25 MB |
+| 29 | Python | 19.744 s | 23.6x | 41.19 MB |
+| 30 | Bash | 38.023 s | 45.4x | 27.95 MB |
+| 31 | AWK | 38.039 s | 45.4x | 27.95 MB |
+| 32 | Ruby | 52.998 s | 63.3x | 66.13 MB |
+| 33 | Perl | 94.019 s | 112.3x | 58.55 MB |
 
 ## Rendered Output
+
+### C++
+
+![C++](output/cpp.png)
+
+### Rust
+
+![Rust](output/rust.png)
+
+### Crystal
+
+![Crystal](output/crystal.png)
+
+### Kotlin
+
+![Kotlin](output/kotlin.png)
+
+### C
+
+![C](output/c.png)
 
 ### C# (.NET 9 AOT)
 
@@ -70,33 +114,109 @@ Ambient light intensity: 0.1.
 
 ![C# (.NET 10 AOT)](output/dotnet10-aot.png)
 
-### Rust
+### Zig
 
-![Rust](output/rust.png)
+![Zig](output/zig.png)
 
-### C
+### Swift
 
-![C](output/c.png)
+![Swift](output/swift.png)
 
-### Go
+### Haskell
 
-![Go](output/go.png)
+![Haskell](output/haskell.png)
+
+### Lua
+
+![Lua](output/lua.png)
+
+### Fortran
+
+![Fortran](output/fortran.png)
+
+### Java
+
+![Java](output/java.png)
 
 ### JavaScript
 
 ![JavaScript](output/javascript.png)
 
-### C# (.NET 10)
+### Go
 
-![C# (.NET 10)](output/dotnet10.png)
+![Go](output/go.png)
+
+### D
+
+![D](output/d.png)
+
+### OCaml
+
+![OCaml](output/ocaml.png)
+
+### Nim
+
+![Nim](output/nim.png)
+
+### Scala
+
+![Scala](output/scala.png)
+
+### Ada
+
+![Ada](output/ada.png)
+
+### Dart
+
+![Dart](output/dart.png)
+
+### TypeScript
+
+![TypeScript](output/typescript.png)
 
 ### C# (.NET 9)
 
 ![C# (.NET 9)](output/dotnet9.png)
 
+### C# (.NET 10)
+
+![C# (.NET 10)](output/dotnet10.png)
+
+### Pascal
+
+![Pascal](output/pascal.png)
+
+### Erlang
+
+![Erlang](output/erlang.png)
+
+### Elixir
+
+![Elixir](output/elixir.png)
+
+### PHP
+
+![PHP](output/php.png)
+
 ### Python
 
 ![Python](output/python.png)
+
+### Bash
+
+![Bash](output/bash.png)
+
+### AWK
+
+![AWK](output/awk.png)
+
+### Ruby
+
+![Ruby](output/ruby.png)
+
+### Perl
+
+![Perl](output/perl.png)
 
 ## How to Run
 
