@@ -1,5 +1,4 @@
 """Tests for docker binary output mode."""
-import subprocess
 from unittest.mock import patch, MagicMock
 from lib.docker import run_container
 

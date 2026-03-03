@@ -1,7 +1,6 @@
 """Tests for PPM validation and SSIM computation."""
 from lib.benchmark import validate_ppm, compute_ssim, save_output_image
 from pathlib import Path
-import struct
 
 
 def make_ppm(width, height, pixel_value=128):
