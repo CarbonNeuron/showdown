@@ -1,0 +1,23 @@
+# Example multi-stage Dockerfile for compiled languages:
+#
+# FROM rust:1.77-slim AS builder
+# WORKDIR /app
+# COPY solution.rs .
+# RUN rustc -O -o solution solution.rs
+#
+# FROM debian:bookworm-slim
+# COPY --from=builder /app/solution /usr/local/bin/solution
+# ENTRYPOINT ["solution"]
+#
+# Example for interpreted languages:
+#
+# FROM python:3.12-slim
+# WORKDIR /app
+# COPY solution.py .
+# ENTRYPOINT ["python3", "solution.py"]
+#
+# Requirements:
+# - ENTRYPOINT must accept a single argument N
+# - Use official language Docker images where possible
+# - Use multi-stage builds for compiled languages
+# - Optimize for runtime performance (-O2 or equivalent)
