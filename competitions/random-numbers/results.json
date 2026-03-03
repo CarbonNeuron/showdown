@@ -1,0 +1,79 @@
+{
+  "competition": "random-numbers",
+  "timestamp": "2026-03-03T01:16:04.122591+00:00",
+  "parameters": {
+    "n": 1000000,
+    "default_n": 1000000,
+    "timeout_build": 120,
+    "timeout_run": 300,
+    "warmup_runs": 1,
+    "bench_runs": 3
+  },
+  "results": [
+    {
+      "language": "c",
+      "build_time_s": 0.0,
+      "run_time_median_s": 2.399499,
+      "run_times_s": [
+        2.399499,
+        2.335099,
+        2.420801
+      ],
+      "image_size_bytes": 28241256,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "python",
+      "build_time_s": 0.0,
+      "run_time_median_s": 2.946311,
+      "run_times_s": [
+        3.001882,
+        2.912429,
+        2.946311
+      ],
+      "image_size_bytes": 43192792,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "rust",
+      "build_time_s": 0.0,
+      "run_time_median_s": 2.344321,
+      "run_times_s": [
+        2.344321,
+        2.332515,
+        2.354879
+      ],
+      "image_size_bytes": 29192856,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "go",
+      "build_time_s": 0.0,
+      "run_time_median_s": 2.361127,
+      "run_times_s": [
+        2.395275,
+        2.356891,
+        2.361127
+      ],
+      "image_size_bytes": 29480903,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "javascript",
+      "build_time_s": 0.0,
+      "run_time_median_s": 2.51817,
+      "run_times_s": [
+        2.487037,
+        2.553778,
+        2.51817
+      ],
+      "image_size_bytes": 79435625,
+      "output_valid": true,
+      "error": ""
+    }
+  ]
+}
