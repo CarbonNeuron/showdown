@@ -120,8 +120,18 @@ def run_benchmark(
 ) -> BenchResult:
     result = BenchResult(language=lang)
 
-    if n is None:
-        n = spec.parameters.get("default_n", 1000000)
+    output_type = spec.parameters.get("output_type", "text")
+    is_image = output_type == "image"
+
+    if is_image:
+        width = spec.parameters.get("default_width", 1920)
+        height = spec.parameters.get("default_height", 1080)
+        container_args = [str(width), str(height)]
+        ssim_threshold = spec.parameters.get("ssim_threshold", 0.85)
+    else:
+        if n is None:
+            n = spec.parameters.get("default_n", 1000000)
+        container_args = [str(n)]
 
     warmup_runs = spec.parameters.get("warmup_runs", 1)
     bench_runs = spec.parameters.get("bench_runs", 3)
@@ -131,7 +141,7 @@ def run_benchmark(
     for _ in range(warmup_runs):
         try:
             stdout, elapsed, rc = run_container(
-                competition, lang, [str(n)], timeout=timeout
+                competition, lang, container_args, timeout=timeout, binary=is_image
             )
             if rc != 0:
                 result.error = f"Warmup failed (exit {rc})"
@@ -141,10 +151,11 @@ def run_benchmark(
             return result
 
     # Benchmark runs
+    first_output = None
     for i in range(bench_runs):
         try:
             stdout, elapsed, rc = run_container(
-                competition, lang, [str(n)], timeout=timeout
+                competition, lang, container_args, timeout=timeout, binary=is_image
             )
             if rc != 0:
                 result.error = f"Run {i+1} failed (exit {rc})"
@@ -153,7 +164,11 @@ def run_benchmark(
             result.run_times_s.append(elapsed)
 
             if i == 0:
-                valid, msg = validate_output(stdout, spec, n)
+                first_output = stdout
+                if is_image:
+                    valid, msg = validate_ppm(stdout, width, height)
+                else:
+                    valid, msg = validate_output(stdout, spec, n)
                 result.output_valid = valid
                 if not valid:
                     result.error = f"Validation: {msg}"
@@ -165,5 +180,23 @@ def run_benchmark(
 
     result.run_time_median_s = statistics.median(result.run_times_s)
     result.image_size_bytes = get_image_size(competition, lang)
+
+    # Image-specific: save output and SSIM check
+    if is_image and first_output:
+        comp_dir = str(Path(__file__).parent.parent / "competitions" / competition)
+        save_output_image(comp_dir, lang, first_output)
+
+        output_dir = Path(comp_dir) / "output"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        ref_path = output_dir / "_reference.ppm"
+        if ref_path.exists():
+            ref_data = ref_path.read_bytes()
+            ssim_score = compute_ssim(ref_data, first_output, width, height)
+            if ssim_score < ssim_threshold:
+                result.output_valid = False
+                result.error = f"SSIM {ssim_score:.3f} < {ssim_threshold}"
+        else:
+            # First passing solution becomes the reference
+            ref_path.write_bytes(first_output)
 
     return result
