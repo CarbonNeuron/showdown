@@ -92,8 +92,15 @@ def generate_report(competition: str, spec: CompetitionSpec) -> Path:
     lines.append(f"# {spec.name} - Results\n")
     lines.append(f"## Task\n\n{spec.task}\n")
 
+    output_type = params.get("output_type", "text")
+
     lines.append("## Methodology\n")
-    lines.append(f"- **N:** {n:,}")
+    if output_type == "image":
+        w = params.get("default_width", 1920)
+        h = params.get("default_height", 1080)
+        lines.append(f"- **Resolution:** {w}x{h}")
+    else:
+        lines.append(f"- **N:** {n:,}")
     lines.append(f"- **Runs:** {params.get('bench_runs', 3)} (median)")
     lines.append(f"- **Warmup:** {params.get('warmup_runs', 1)}")
     lines.append(f"- **Containers:** Docker with `--network=none --memory=512m --cpus=1`")
@@ -131,6 +138,19 @@ def generate_report(competition: str, spec: CompetitionSpec) -> Path:
             lang_name = LANGUAGES.get(r["language"], {}).get("name", r["language"])
             lines.append(f"| {i} | {lang_name} | {format_time(r['build_time_s'])} |")
         lines.append("")
+
+    # Rendered output section for image competitions
+    if output_type == "image":
+        output_dir = BASE_DIR / "competitions" / competition / "output"
+        if output_dir.exists():
+            ok_langs = [r["language"] for r in ok]
+            pngs = [(l, output_dir / f"{l}.png") for l in ok_langs if (output_dir / f"{l}.png").exists()]
+            if pngs:
+                lines.append("## Rendered Output\n")
+                for lang_key, png_path in pngs:
+                    lang_name = LANGUAGES.get(lang_key, {}).get("name", lang_key)
+                    lines.append(f"### {lang_name}\n")
+                    lines.append(f"![{lang_name}](output/{lang_key}.png)\n")
 
     lines.append("## How to Run\n")
     lines.append("```bash")
