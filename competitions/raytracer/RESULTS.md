@@ -50,13 +50,25 @@ Ambient light intensity: 0.1.
 
 | Rank | Language | Runtime | vs Fastest | Image Size |
 |-----:|----------|--------:|-----------:|-----------:|
-| 1 | **Rust** | 891.9 ms | 1.0x | 27.84 MB |
-| 2 | **C** | 976.2 ms | 1.1x | 26.94 MB |
-| 3 | **JavaScript** | 1.279 s | 1.4x | 75.76 MB |
-| 4 | Go | 1.330 s | 1.5x | 28.08 MB |
-| 5 | Python | 20.016 s | 22.4x | 41.19 MB |
+| 1 | **C# (.NET 9 AOT)** | 871.4 ms | 1.0x | 27.55 MB |
+| 2 | **C# (.NET 10 AOT)** | 883.1 ms | 1.0x | 27.50 MB |
+| 3 | **Rust** | 938.7 ms | 1.1x | 27.84 MB |
+| 4 | C | 940.6 ms | 1.1x | 26.94 MB |
+| 5 | Go | 1.301 s | 1.5x | 28.08 MB |
+| 6 | JavaScript | 1.341 s | 1.5x | 75.76 MB |
+| 7 | C# (.NET 10) | 2.552 s | 2.9x | 79.37 MB |
+| 8 | C# (.NET 9) | 2.595 s | 3.0x | 77.80 MB |
+| 9 | Python | 19.493 s | 22.4x | 41.19 MB |
 
 ## Rendered Output
+
+### C# (.NET 9 AOT)
+
+![C# (.NET 9 AOT)](output/dotnet9-aot.png)
+
+### C# (.NET 10 AOT)
+
+![C# (.NET 10 AOT)](output/dotnet10-aot.png)
 
 ### Rust
 
@@ -66,13 +78,21 @@ Ambient light intensity: 0.1.
 
 ![C](output/c.png)
 
+### Go
+
+![Go](output/go.png)
+
 ### JavaScript
 
 ![JavaScript](output/javascript.png)
 
-### Go
+### C# (.NET 10)
 
-![Go](output/go.png)
+![C# (.NET 10)](output/dotnet10.png)
+
+### C# (.NET 9)
+
+![C# (.NET 9)](output/dotnet9.png)
 
 ### Python
 

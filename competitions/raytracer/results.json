@@ -1,6 +1,6 @@
 {
   "competition": "raytracer",
-  "timestamp": "2026-03-03T02:19:09.885284+00:00",
+  "timestamp": "2026-03-03T02:33:36.664169+00:00",
   "parameters": {
     "n": 1920,
     "default_n": 1000000,
@@ -17,11 +17,11 @@
     {
       "language": "c",
       "build_time_s": 0.0,
-      "run_time_median_s": 0.976182,
+      "run_time_median_s": 0.940608,
       "run_times_s": [
-        0.991962,
-        0.976182,
-        0.964089
+        0.937482,
+        0.959369,
+        0.940608
       ],
       "image_size_bytes": 28244272,
       "output_valid": true,
@@ -30,11 +30,11 @@
     {
       "language": "rust",
       "build_time_s": 0.0,
-      "run_time_median_s": 0.89188,
+      "run_time_median_s": 0.938731,
       "run_times_s": [
-        0.89188,
-        0.90136,
-        0.868739
+        0.929745,
+        0.947585,
+        0.938731
       ],
       "image_size_bytes": 29197349,
       "output_valid": true,
@@ -43,11 +43,11 @@
     {
       "language": "go",
       "build_time_s": 0.0,
-      "run_time_median_s": 1.329808,
+      "run_time_median_s": 1.300582,
       "run_times_s": [
-        1.26061,
-        1.339075,
-        1.329808
+        1.300582,
+        1.274442,
+        1.309358
       ],
       "image_size_bytes": 29448636,
       "output_valid": true,
@@ -56,11 +56,11 @@
     {
       "language": "javascript",
       "build_time_s": 0.0,
-      "run_time_median_s": 1.279274,
+      "run_time_median_s": 1.341227,
       "run_times_s": [
-        1.260175,
-        1.286967,
-        1.279274
+        1.341288,
+        1.309479,
+        1.341227
       ],
       "image_size_bytes": 79438428,
       "output_valid": true,
@@ -69,13 +69,65 @@
     {
       "language": "python",
       "build_time_s": 0.0,
-      "run_time_median_s": 20.016315,
+      "run_time_median_s": 19.493257,
       "run_times_s": [
-        19.627726,
-        20.024092,
-        20.016315
+        19.358797,
+        19.720957,
+        19.493257
       ],
       "image_size_bytes": 43195451,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "dotnet9",
+      "build_time_s": 0.0,
+      "run_time_median_s": 2.595032,
+      "run_times_s": [
+        2.611359,
+        2.580695,
+        2.595032
+      ],
+      "image_size_bytes": 81580988,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "dotnet10",
+      "build_time_s": 0.0,
+      "run_time_median_s": 2.551639,
+      "run_times_s": [
+        2.603397,
+        1.601713,
+        2.551639
+      ],
+      "image_size_bytes": 83228112,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "dotnet9-aot",
+      "build_time_s": 0.0,
+      "run_time_median_s": 0.871438,
+      "run_times_s": [
+        0.849102,
+        0.878879,
+        0.871438
+      ],
+      "image_size_bytes": 28890108,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "dotnet10-aot",
+      "build_time_s": 0.0,
+      "run_time_median_s": 0.883068,
+      "run_times_s": [
+        0.883068,
+        0.878357,
+        0.88906
+      ],
+      "image_size_bytes": 28839824,
       "output_valid": true,
       "error": ""
     }
