@@ -45,7 +45,8 @@ def run_container(
     memory: str = "512m",
     cpus: str = "1",
     stdin_data: str | None = None,
-) -> tuple[str, float, int]:
+    binary: bool = False,
+) -> tuple[str | bytes, float, int]:
     tag = image_name(competition, lang)
     cmd = [
         "docker", "run", "--rm",
@@ -59,7 +60,7 @@ def run_container(
     proc = subprocess.run(
         cmd,
         capture_output=True,
-        text=True,
+        text=not binary,
         timeout=timeout,
         input=stdin_data,
     )
