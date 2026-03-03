@@ -28,7 +28,18 @@ python showdown.py run <name> --lang rust --n 1000  # custom problem size
 python showdown.py generate <name> --lang python --force
 ```
 
-There are no formal tests, linter, or package manager configured. The project is plain Python 3.12+ with no dependencies beyond the standard library and Docker.
+## Testing
+
+```bash
+python3 -m pytest tests/ -v          # run all tests
+python3 -m pytest tests/test_docker.py -v  # run specific test file
+```
+
+## Dependencies
+
+```bash
+pip install -r requirements.txt  # pillow, scikit-image (for image competitions)
+```
 
 ## Architecture
 
@@ -38,8 +49,8 @@ There are no formal tests, linter, or package manager configured. The project is
 - `lib/spec.py` — Parses `SPEC.md` markdown into a `CompetitionSpec` dataclass. Sections are identified by `## Heading` markers. Parameters have defaults (N=1M, timeout_build=120s, timeout_run=300s, warmup=1, bench_runs=3).
 - `lib/languages.py` — Registry of 32 languages as a `LANGUAGES` dict mapping key → `{ext, name, compiled}`. `resolve_languages("all")` returns all keys.
 - `lib/agents.py` — `build_agent_prompt()` assembles a structured prompt from the spec for AI subagents to produce `solution.<ext>` + `Dockerfile`. `solution_exists()` checks for both files.
-- `lib/docker.py` — `build_image()` and `run_container()` wrap Docker CLI via subprocess. Containers run with `--network=none --memory=512m --cpus=1`. Image naming: `showdown-{competition}-{lang}`.
-- `lib/benchmark.py` — `run_benchmark()` does warmup runs, bench runs, median calculation, output validation, and image size capture. Returns `BenchResult` dataclass. Validation rules: line count, integer check, range check, sorted check.
+- `lib/docker.py` — `build_image()` and `run_container()` wrap Docker CLI via subprocess. Containers run with `--network=none --memory=512m --cpus=1`. Image naming: `showdown-{competition}-{lang}`. `run_container(binary=True)` captures raw bytes for image competitions.
+- `lib/benchmark.py` — `run_benchmark()` does warmup runs, bench runs, median calculation, output validation, and image size capture. Returns `BenchResult` dataclass. Branches on `output_type`: text mode validates line count/integers/ranges/sorted; image mode validates PPM format and SSIM against a reference. Also has `validate_ppm()`, `compute_ssim()`, `save_output_image()`.
 - `lib/report.py` — Generates `RESULTS.md` (ranked markdown table) and `results.json` (machine-readable). Includes `format_time()` and `format_size()` helpers.
 
 ## Competition Structure
@@ -54,8 +65,19 @@ competitions/<name>/
 
 ## Key Conventions
 
-- Solutions must produce two files: `solution.<ext>` and a `Dockerfile` with `ENTRYPOINT` accepting N as its argument.
+- Solutions must produce two files: `solution.<ext>` and a `Dockerfile` with `ENTRYPOINT` accepting args (N for text competitions, WIDTH HEIGHT for image competitions).
 - Compiled languages use multi-stage Docker builds; interpreted languages use single-stage.
 - The `generate` command skips languages that already have solutions unless `--force` is passed.
 - Docker images use the naming convention `showdown-{competition}-{lang}`.
 - All SPEC.md parsing is section-based (`## Task`, `## Interface`, `## Validation`, `## Scoring`, `## Parameters`, `## Languages`, `## Docker`).
+
+## Image Competitions
+
+Competitions with `**output_type**: image` in their Parameters section produce binary PPM P6 output instead of text. Key differences:
+
+- Container entrypoint takes `WIDTH HEIGHT` args instead of `N`
+- Docker output captured in binary mode (`run_container(binary=True)`)
+- Validation: PPM format check + SSIM >= threshold against a reference image
+- First passing solution's output becomes the reference (`output/_reference.ppm`)
+- Output saved as `output/<lang>.ppm` and `output/<lang>.png` (converted via Pillow)
+- RESULTS.md includes a "Rendered Output" section with embedded PNG thumbnails
