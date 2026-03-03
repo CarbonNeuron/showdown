@@ -22,6 +22,13 @@ def build_agent_prompt(
 
     dockerfile_template = (BASE_DIR / "templates" / "Dockerfile.template").read_text()
 
+    output_type = spec.parameters.get("output_type", "text")
+
+    if output_type == "image":
+        entrypoint_doc = "The ENTRYPOINT must accept two arguments: WIDTH HEIGHT (the image dimensions)"
+    else:
+        entrypoint_doc = "The ENTRYPOINT must accept a single argument N (the number passed on the command line)"
+
     prompt = f'''You are implementing a solution for the "{spec.name}" programming language showdown in **{lang_name}**.
 
 ## Task
@@ -42,7 +49,7 @@ Write these files inside the directory `{comp_dir}/`:
 
 ### Dockerfile requirements:
 - Use multi-stage builds for compiled languages (build stage + slim runtime stage)
-- The ENTRYPOINT must accept a single argument N (the number passed on the command line)
+- {entrypoint_doc}
 - Use official language Docker images where available (e.g. `rust:1.77-slim`, `python:3.12-slim`, `golang:1.22-bookworm`)
 - Optimize for runtime performance (use -O2 or equivalent compiler flags)
 - For interpreted languages, just COPY the source and set ENTRYPOINT
