@@ -1,0 +1,83 @@
+{
+  "competition": "raytracer",
+  "timestamp": "2026-03-03T02:19:09.885284+00:00",
+  "parameters": {
+    "n": 1920,
+    "default_n": 1000000,
+    "timeout_build": 300,
+    "timeout_run": 600,
+    "warmup_runs": 1,
+    "bench_runs": 3,
+    "output_type": "image",
+    "default_width": 1920,
+    "default_height": 1080,
+    "ssim_threshold": 0.85
+  },
+  "results": [
+    {
+      "language": "c",
+      "build_time_s": 0.0,
+      "run_time_median_s": 0.976182,
+      "run_times_s": [
+        0.991962,
+        0.976182,
+        0.964089
+      ],
+      "image_size_bytes": 28244272,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "rust",
+      "build_time_s": 0.0,
+      "run_time_median_s": 0.89188,
+      "run_times_s": [
+        0.89188,
+        0.90136,
+        0.868739
+      ],
+      "image_size_bytes": 29197349,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "go",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.329808,
+      "run_times_s": [
+        1.26061,
+        1.339075,
+        1.329808
+      ],
+      "image_size_bytes": 29448636,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "javascript",
+      "build_time_s": 0.0,
+      "run_time_median_s": 1.279274,
+      "run_times_s": [
+        1.260175,
+        1.286967,
+        1.279274
+      ],
+      "image_size_bytes": 79438428,
+      "output_valid": true,
+      "error": ""
+    },
+    {
+      "language": "python",
+      "build_time_s": 0.0,
+      "run_time_median_s": 20.016315,
+      "run_times_s": [
+        19.627726,
+        20.024092,
+        20.016315
+      ],
+      "image_size_bytes": 43195451,
+      "output_valid": true,
+      "error": ""
+    }
+  ]
+}
