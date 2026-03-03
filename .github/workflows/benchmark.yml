@@ -1,0 +1,37 @@
+name: Benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      competition:
+        description: 'Competition name'
+        required: true
+        type: string
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build Docker images
+        run: python showdown.py build ${{ inputs.competition }}
+
+      - name: Run benchmarks
+        run: python showdown.py run ${{ inputs.competition }}
+
+      - name: Generate report
+        run: python showdown.py report ${{ inputs.competition }}
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add competitions/*/results.json competitions/*/RESULTS.md
+          git diff --staged --quiet || git commit -m "Benchmark results: ${{ inputs.competition }}"
+          git push
