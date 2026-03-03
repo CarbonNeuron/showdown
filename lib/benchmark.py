@@ -3,6 +3,7 @@
 import re
 import statistics
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from .spec import CompetitionSpec
 from .docker import run_container, get_image_size
@@ -49,6 +50,66 @@ def validate_output(output: str, spec: CompetitionSpec, n: int) -> tuple[bool, s
                 return False, f"Not sorted: line {i+1} ({vals[i]}) > line {i+2} ({vals[i+1]})"
 
     return True, ""
+
+
+def validate_ppm(data: bytes, width: int, height: int) -> tuple[bool, str]:
+    """Validate PPM P6 binary format."""
+    if not data.startswith(b"P6"):
+        return False, "Not a PPM P6 file (missing P6 magic)"
+
+    try:
+        header_end = data.index(b"\n", data.index(b"\n", data.index(b"\n") + 1) + 1) + 1
+        header = data[:header_end].decode("ascii")
+        lines = header.strip().split("\n")
+        lines = [l for l in lines if not l.startswith("#")]
+        dims = lines[1].split()
+        w, h = int(dims[0]), int(dims[1])
+    except (ValueError, IndexError):
+        return False, "Failed to parse PPM header"
+
+    if w != width or h != height:
+        return False, f"Dimension mismatch: expected {width}x{height}, got {w}x{h}"
+
+    expected_data_len = width * height * 3
+    actual_data_len = len(data) - header_end
+    if actual_data_len < expected_data_len:
+        return False, f"Pixel data too short: expected {expected_data_len} bytes, got {actual_data_len}"
+
+    return True, ""
+
+
+def compute_ssim(ppm_a: bytes, ppm_b: bytes, width: int, height: int) -> float:
+    """Compute SSIM between two PPM P6 images."""
+    import numpy as np
+    from PIL import Image
+    from skimage.metrics import structural_similarity
+    import io
+
+    img_a = Image.open(io.BytesIO(ppm_a)).convert("L")
+    img_b = Image.open(io.BytesIO(ppm_b)).convert("L")
+
+    arr_a = np.array(img_a)
+    arr_b = np.array(img_b)
+
+    return structural_similarity(arr_a, arr_b)
+
+
+def save_output_image(comp_dir: str, lang: str, ppm_data: bytes) -> Path:
+    """Save PPM data as .ppm and convert to .png. Returns the output directory."""
+    from PIL import Image
+    import io
+
+    output_dir = Path(comp_dir) / "output"
+    output_dir.mkdir(exist_ok=True)
+
+    ppm_path = output_dir / f"{lang}.ppm"
+    ppm_path.write_bytes(ppm_data)
+
+    img = Image.open(io.BytesIO(ppm_data))
+    png_path = output_dir / f"{lang}.png"
+    img.save(png_path)
+
+    return output_dir
 
 
 def run_benchmark(
