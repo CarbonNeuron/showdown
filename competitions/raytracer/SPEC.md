@@ -63,7 +63,7 @@ Ambient light intensity: 0.1.
 - **bench_runs**: 3
 
 ## Languages
-c, rust, go, javascript, python, dotnet9, dotnet10, dotnet9-aot, dotnet10-aot
+c, cpp, rust, go, zig, nim, d, crystal, swift, dart, java, kotlin, scala, dotnet9, dotnet10, dotnet9-aot, dotnet10-aot, haskell, ocaml, fortran, pascal, ada, javascript, typescript, python, ruby, lua, perl, php, elixir, erlang, bash, awk
 
 ## Docker
 - **base_image**: ubuntu:24.04
